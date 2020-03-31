@@ -16,7 +16,7 @@ const getPhenotypeTerm = (id) => {
       type: 'phenotype'
     };
   }).catch(error => {
-    console.log(error);
+    throw error;
   })
 }
 
