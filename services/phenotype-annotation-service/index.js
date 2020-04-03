@@ -9,26 +9,55 @@ const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
 const typeDefs = gql`
   type Query {
     getPhenotypeOntologyTerm(id: String!): PhenotypeOntology
+    getPhenotypeAnnotationByPhenotype(phenotypeId: String!): [PhenotypeAnnotation!]
+    getPhenotypeAnnotationByVariation(variationId: String!): [PhenotypeAnnotation!]
   }
 
-  type PhenotypeOntology @key(fields: "id") {
+  type PhenotypeOntology {
     id: ID!
     name: String
   }
 
+  type PhenotypeAnnotation {
+    id: ID!
+    phenotype: PhenotypeOntology!
+    variation: Variation!
+  }
+
+  extend type Variation @key(fields: "id") {
+    id: ID! @external
+    phenotypeAnnotations: [PhenotypeAnnotation!]
+  }
 
 `;
 
 const resolvers = {
   Query: {
-    getPhenotypeOntologyTerm(parent, args, { dataSources }) {
-      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(args.id);
+    getPhenotypeOntologyTerm: (parent, { id }, { dataSources }) => {
+      return { id };
+    },
+    getPhenotypeAnnotationByPhenotype: (parent, args, { dataSources }) => {
+      return [{
+        id: 1,
+      }]
     }
   },
   PhenotypeOntology: {
-    __resolveReference(reference, { dataSources }) {
-      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(reference.id);
-    }
+    name: async ({id}, args, { dataSources }) => {
+      const { name } = await dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(id);
+      return name;
+    },
+  },
+  PhenotypeAnnotation: {
+    phenotype: (parent, args, { dataSources }) => {
+      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm('WBPhenotype:0000007');
+    },
+    variation: () => {
+      return {__typename: 'Variation', id: 'WBVar00142951'};
+    },
+  },
+  Variation: {
+
   }
 }
 

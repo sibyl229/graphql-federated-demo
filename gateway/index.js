@@ -5,7 +5,8 @@ const { ApolloGateway } = require("@apollo/gateway");
 // service names and URLs
 const gateway = new ApolloGateway({
   serviceList: [
-    { name: 'PhenotypeOntology', url: 'http://localhost:4001' },
+    { name: 'Variation', url: 'http://localhost:4002' },
+    { name: 'PhenotypeAnnotation', url: 'http://localhost:4001' },
     // more services
   ],
 });

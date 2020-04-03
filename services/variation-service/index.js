@@ -9,7 +9,7 @@ const typeDefs = gql`
   }
 
   type Variation @key(fields: "id") {
-    id: String!
+    id: ID!
     name: String
   }
 `;
