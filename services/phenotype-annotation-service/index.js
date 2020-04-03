@@ -1,25 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { buildFederatedSchema } = require('@apollo/federation');
-const axios = require('axios');
-
-const getPhenotypeTerm = (id) => {
-  return axios.get('http://wormbase-search-ws275.us-east-1.elasticbeanstalk.com/integration/search-exact', {
-    params: {
-      class: 'phenotype',
-      q: id
-    }
-  }).then(response => {
-    const {id, label: name} = response.data;
-    return {
-      id: id,
-      name: name,
-      type: 'phenotype'
-    };
-  }).catch(error => {
-    throw error;
-  })
-}
-
+const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
 // ({
 //   id: 'WBPhenotype:0002254',
 //   name: '3 prime target RNA uridylation reduced'
@@ -33,26 +14,29 @@ const typeDefs = gql`
   type PhenotypeOntology @key(fields: "id") {
     id: ID!
     name: String
-    type: String!
   }
+
+
 `;
 
 const resolvers = {
   Query: {
-    get(parent, args) {
-      const { id } = args;
-      return getPhenotypeTerm(id);
+    get(parent, args, { dataSources }) {
+      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(args.id);
     }
   },
-  User: {
-    __resolveReference({id}){
-      return getPhenotypeTerm(id)
+  PhenotypeOntology: {
+    __resolveReference(reference, { dataSources }) {
+      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(reference.id);
     }
   }
 }
 
 const server = new ApolloServer({
-  schema: buildFederatedSchema([{ typeDefs, resolvers }])
+  schema: buildFederatedSchema([{ typeDefs, resolvers }]),
+  dataSources: () => ({
+    phenotypeOntologyAPI: new PhenotypeOntologyAPI(),
+  })
 });
 
 server.listen(4001).then(({ url }) => {

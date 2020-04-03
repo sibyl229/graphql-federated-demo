@@ -20,6 +20,11 @@ const resolvers = {
       return dataSources.variationAPI.getVariation(id);
     },
   },
+  Variation: {
+    __resolveReference: (reference, { dataSources}) => {
+      return dataSources.variationAPI.getVariation(reference.id)
+    },
+  }
 };
 
 const server = new ApolloServer({
