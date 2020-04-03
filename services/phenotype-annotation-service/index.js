@@ -8,7 +8,7 @@ const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
 
 const typeDefs = gql`
   type Query {
-    get(id: String!): PhenotypeOntology
+    getPhenotypeOntologyTerm(id: String!): PhenotypeOntology
   }
 
   type PhenotypeOntology @key(fields: "id") {
@@ -21,7 +21,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    get(parent, args, { dataSources }) {
+    getPhenotypeOntologyTerm(parent, args, { dataSources }) {
       return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(args.id);
     }
   },
