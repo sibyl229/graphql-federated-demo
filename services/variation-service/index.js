@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const { buildFederatedSchema } = require('@apollo/federation');
 const VariationAPI = require('./VariationAPI');
 
 // The GraphQL schema
@@ -7,7 +8,7 @@ const typeDefs = gql`
     getVariation(id: String!): Variation
   }
 
-  type Variation {
+  type Variation @key(fields: "id") {
     id: String!
     name: String
   }
@@ -24,12 +25,14 @@ const resolvers = {
     __resolveReference: (reference, { dataSources}) => {
       return dataSources.variationAPI.getVariation(reference.id)
     },
-  }
+  },
 };
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  schema: buildFederatedSchema([{
+    typeDefs,
+    resolvers,
+  }]),
   dataSources: () => ({
     variationAPI: new VariationAPI()
   })
