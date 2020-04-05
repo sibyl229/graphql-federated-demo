@@ -11,6 +11,9 @@ services:
       - "9300"
   logstash:
     image: "docker.elastic.co/logstash/logstash:7.6.2"
+    command: "bin/logstash -f pipeline/vep.config --config.reload.automatic"
+    volumes:
+      - ./services/variation-service/pipeline/:/usr/share/logstash/pipeline/
     links:
       - elasticsearch
     depends_on:
