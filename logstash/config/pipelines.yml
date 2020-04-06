@@ -1,2 +1,4 @@
 - pipeline.id: vep
   path.config: "pipeline/vep.config"
+- pipeline.id: variants
+  path.config: "pipeline/variants.config"
