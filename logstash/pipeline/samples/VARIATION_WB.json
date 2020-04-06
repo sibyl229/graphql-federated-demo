@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "alleleId": "WB:WBVar00252636",
+      "start": 14759,
+      "end": 15004,
+      "chromosome": "I",
+      "assembly": "WBcel235",
+      "type": "SO:0000159",
+      "paddedBase": "C",
+      "genomicReferenceSequence": "TGTATGTGGTGATTTACGGGCTCAAAAAATTATTTTCGAAAATCAAGCCCGTAAATCCACACGTAGTAATTATATAAAGAATTACTGTAGTTTTCGCTACGAGATATTTTGCGCGCCAAGTATGTTGCGCAATACGCAACCCCATATGTTGATATATACTGATGTGAGGATAAAAAACAACACAACTTTCAGCGGCTCCATCGGCTCCGGCAGGTCTCGAGGAGAAGCTGCGTGCTCTTCAGGAGC",
+      "genomicVariantSequence": "N/A",
+      "references": [
+        {
+          "publicationId": "PMID:23583549",
+          "crossReference": {
+            "id": "WB:WBPaper00042242",
+            "pages": [
+              "reference"
+            ]
+          }
+        }
+      ],
+      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
+    },
+    {
+      "alleleId": "WB:WBVar00094233",
+      "start": 29644,
+      "end": 30178,
+      "chromosome": "I",
+      "assembly": "WBcel235",
+      "type": "SO:0000159",
+      "paddedBase": "C",
+      "genomicReferenceSequence": "AGTTTCCGCCACGAAATATTTCGCGCTTCAAACATGTTGCGTAGTACGTATTCTCAAAATTGTGCGTTCACGTATAATATTTATGCGAATTTTTGGTCTACTTTGTTAGAGAAATCATCACTAACATATTGCCAGTAAGAGTCCGAATATGATCGAACATTCGATCAAGCCGTGACGTCAGTGTATCCGTATACTCATTCATCGTATTATAAACATGATCCCATCCAAATTCTTCAACTCGGAATGGCGGAATATCCTTTTCAGGTCGCTTTCTAAAATCAATATATCCAAATGTTCGATGATGCGAGTAAATTGGATAATTACACGGCGGCTCTTTTTCCATAATATCTTCTCCATTTTCATCGATATTTGCAAGAAGAAGTACAGGCGAGTAGTTTTTCCGATTGGAACTATATGTTGCTGCAGGAGCACTAATTAATGATTCAATAGTTTCAGTAGTCATTGCACACATCTTCGCTGGTGGCCTAGTTTGTCCTTTTTCCGTCTTTTTCAGCTCACTGATCAAATATTCGAC",
+      "genomicVariantSequence": "N/A",
+      "references": [
+        {
+          "publicationId": "PMID:23318476",
+          "crossReference": {
+            "id": "WB:WBPaper00041986",
+            "pages": [
+              "reference"
+            ]
+          }
+        }
+      ],
+      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
+    },
+    {
+      "alleleId": "WB:WBVar00251693",
+      "start": 29850,
+      "end": 30214,
+      "chromosome": "I",
+      "assembly": "WBcel235",
+      "type": "SO:0000159",
+      "paddedBase": "A",
+      "genomicReferenceSequence": "TTATAAACATGATCCCATCCAAATTCTTCAACTCGGAATGGCGGAATATCCTTTTCAGGTCGCTTTCTAAAATCAATATATCCAAATGTTCGATGATGCGAGTAAATTGGATAATTACACGGCGGCTCTTTTTCCATAATATCTTCTCCATTTTCATCGATATTTGCAAGAAGAAGTACAGGCGAGTAGTTTTTCCGATTGGAACTATATGTTGCTGCAGGAGCACTAATTAATGATTCAATAGTTTCAGTAGTCATTGCACACATCTTCGCTGGTGGCCTAGTTTGTCCTTTTTCCGTCTTTTTCAGCTCACTGATCAAATATTCGACTTCAGTTGGCCGACGATCTGGGACTTTTCGGAAATA",
+      "genomicVariantSequence": "N/A",
+      "references": [
+        {
+          "publicationId": "PMID:23318476",
+          "crossReference": {
+            "id": "WB:WBPaper00041986",
+            "pages": [
+              "reference"
+            ]
+          }
+        }
+      ],
+      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
+    }
+  ],
+  "metaData": {
+    "dataProvider": {
+      "crossReference": {
+        "id": "WormBase",
+        "pages": [
+          "homepage"
+        ]
+      },
+      "type": "curated"
+    },
+    "dateProduced": "2020-01-29T10:33:36+00:00",
+    "release": "WS275"
+  }
+}
