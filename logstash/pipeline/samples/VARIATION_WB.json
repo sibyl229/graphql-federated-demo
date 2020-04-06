@@ -24,50 +24,112 @@
       "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
     },
     {
-      "alleleId": "WB:WBVar00094233",
-      "start": 29644,
-      "end": 30178,
-      "chromosome": "I",
+      "alleleId": "WB:WBVar00266572",
+      "start": 7816091,
+      "end": 7816092,
+      "chromosome": "III",
       "assembly": "WBcel235",
-      "type": "SO:0000159",
-      "paddedBase": "C",
-      "genomicReferenceSequence": "AGTTTCCGCCACGAAATATTTCGCGCTTCAAACATGTTGCGTAGTACGTATTCTCAAAATTGTGCGTTCACGTATAATATTTATGCGAATTTTTGGTCTACTTTGTTAGAGAAATCATCACTAACATATTGCCAGTAAGAGTCCGAATATGATCGAACATTCGATCAAGCCGTGACGTCAGTGTATCCGTATACTCATTCATCGTATTATAAACATGATCCCATCCAAATTCTTCAACTCGGAATGGCGGAATATCCTTTTCAGGTCGCTTTCTAAAATCAATATATCCAAATGTTCGATGATGCGAGTAAATTGGATAATTACACGGCGGCTCTTTTTCCATAATATCTTCTCCATTTTCATCGATATTTGCAAGAAGAAGTACAGGCGAGTAGTTTTTCCGATTGGAACTATATGTTGCTGCAGGAGCACTAATTAATGATTCAATAGTTTCAGTAGTCATTGCACACATCTTCGCTGGTGGCCTAGTTTGTCCTTTTTCCGTCTTTTTCAGCTCACTGATCAAATATTCGAC",
-      "genomicVariantSequence": "N/A",
+      "type": "SO:0000667",
+      "paddedBase": "A",
+      "genomicReferenceSequence": "N/A",
+      "genomicVariantSequence": "AAAACAA",
       "references": [
         {
-          "publicationId": "PMID:23318476",
+          "publicationId": "PMID:3200316",
           "crossReference": {
-            "id": "WB:WBPaper00041986",
+            "id": "WB:WBPaper00001105",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:2721931",
+          "crossReference": {
+            "id": "WB:WBPaper00001133",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "WB:WBPaper00014695",
+          "crossReference": {
+            "id": "WB:WBPaper00014695",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:15581880",
+          "crossReference": {
+            "id": "WB:WBPaper00024644",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:26539892",
+          "crossReference": {
+            "id": "WB:WBPaper00048760",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:26547238",
+          "crossReference": {
+            "id": "WB:WBPaper00048777",
             "pages": [
               "reference"
             ]
           }
         }
       ],
-      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
+      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003281.10"
     },
     {
-      "alleleId": "WB:WBVar00251693",
-      "start": 29850,
-      "end": 30214,
-      "chromosome": "I",
+      "alleleId": "WB:WBVar00088953",
+      "start": 8077980,
+      "end": 8077980,
+      "chromosome": "III",
       "assembly": "WBcel235",
-      "type": "SO:0000159",
-      "paddedBase": "A",
-      "genomicReferenceSequence": "TTATAAACATGATCCCATCCAAATTCTTCAACTCGGAATGGCGGAATATCCTTTTCAGGTCGCTTTCTAAAATCAATATATCCAAATGTTCGATGATGCGAGTAAATTGGATAATTACACGGCGGCTCTTTTTCCATAATATCTTCTCCATTTTCATCGATATTTGCAAGAAGAAGTACAGGCGAGTAGTTTTTCCGATTGGAACTATATGTTGCTGCAGGAGCACTAATTAATGATTCAATAGTTTCAGTAGTCATTGCACACATCTTCGCTGGTGGCCTAGTTTGTCCTTTTTCCGTCTTTTTCAGCTCACTGATCAAATATTCGACTTCAGTTGGCCGACGATCTGGGACTTTTCGGAAATA",
-      "genomicVariantSequence": "N/A",
+      "type": "SO:1000008",
+      "genomicReferenceSequence": "C",
+      "genomicVariantSequence": "A",
       "references": [
         {
-          "publicationId": "PMID:23318476",
+          "publicationId": "PMID:19797044",
           "crossReference": {
-            "id": "WB:WBPaper00041986",
+            "id": "WB:WBPaper00035199",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:22692424",
+          "crossReference": {
+            "id": "WB:WBPaper00041184",
+            "pages": [
+              "reference"
+            ]
+          }
+        },
+        {
+          "publicationId": "PMID:22958919",
+          "crossReference": {
+            "id": "WB:WBPaper00041520",
             "pages": [
               "reference"
             ]
           }
         }
       ],
-      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003279.8"
+      "sequenceOfReferenceAccessionNumber": "RefSeq:NC_003281.10"
     }
   ],
   "metaData": {
