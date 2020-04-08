@@ -19,6 +19,9 @@ services:
       - elasticsearch
     depends_on:
       - elasticsearch
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
   kibana:
     image: "docker.elastic.co/kibana/kibana:7.6.2"
     links:
