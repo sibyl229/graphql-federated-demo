@@ -1,0 +1,19 @@
+version: '3'
+services:
+  logstash:
+    build: ./logstash/
+    command: "bin/logstash --config.reload.automatic"
+    volumes:
+      - ./logstash/pipeline/:/usr/share/logstash/pipeline/
+      - ./logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml
+      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - logstash-data/:/usr/share/logstash/data/
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+volumes:
+  logstash-data:
