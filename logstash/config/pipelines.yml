@@ -1,3 +1,5 @@
+- pipeline.id: alleles
+  path.config: "pipeline/alleles.config"
 - pipeline.id: vep
   path.config: "pipeline/vep.config"
 - pipeline.id: variants
