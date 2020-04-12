@@ -1,6 +1,7 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { buildFederatedSchema } = require('@apollo/federation');
 const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
+const PhenotypeAnnotationAPI = require('./PhenotypeAnnotationAPI');
 // ({
 //   id: 'WBPhenotype:0002254',
 //   name: '3 prime target RNA uridylation reduced'
@@ -9,7 +10,6 @@ const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
 const typeDefs = gql`
   type Query {
     getPhenotypeOntologyTerm(id: String!): PhenotypeOntology
-    getPhenotypeAnnotationByPhenotype(phenotypeId: String!): [PhenotypeAnnotation!]
     getPhenotypeAnnotationByVariation(variationId: String!): [PhenotypeAnnotation!]
   }
 
@@ -36,10 +36,8 @@ const resolvers = {
     getPhenotypeOntologyTerm: (parent, { id }, { dataSources }) => {
       return { id };
     },
-    getPhenotypeAnnotationByPhenotype: (parent, args, { dataSources }) => {
-      return [{
-        id: 1,
-      }]
+    getPhenotypeAnnotationByVariation: (parent, { variationId }, { dataSources }) => {
+      return dataSources.phenotypeAnnotationAPI.getAnnotationsByVariation(variationId);
     }
   },
   PhenotypeOntology: {
@@ -49,11 +47,15 @@ const resolvers = {
     },
   },
   PhenotypeAnnotation: {
-    phenotype: (parent, args, { dataSources }) => {
-      return dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm('WBPhenotype:0000007');
+    id: (parent, args, { dataSources }) => {
+      return dataSources.phenotypeAnnotationAPI.getId(parent);
     },
-    variation: () => {
-      return {__typename: 'Variation', id: 'WBVar00142951'};
+    phenotype: (parent, args, { dataSources }) => {
+      return dataSources.phenotypeAnnotationAPI.getPhenotypeTerm(parent);
+    },
+    variation: (parent, args, { dataSources }) => {
+      const { id } = dataSources.phenotypeAnnotationAPI.getVariation(parent);
+      return { __typename: 'Variation', id: id };
     },
   },
   Variation: {
@@ -65,6 +67,7 @@ const server = new ApolloServer({
   schema: buildFederatedSchema([{ typeDefs, resolvers }]),
   dataSources: () => ({
     phenotypeOntologyAPI: new PhenotypeOntologyAPI(),
+    phenotypeAnnotationAPI: new PhenotypeAnnotationAPI(),
   })
 });
 

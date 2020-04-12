@@ -11,6 +11,12 @@ const typeDefs = gql`
   type Variation @key(fields: "id") {
     id: ID!
     name: String
+    variants: [Variant]!
+  }
+
+  type Variant {
+    id: ID!
+    variations: [Variation]!
   }
 `;
 
@@ -22,8 +28,11 @@ const resolvers = {
     },
   },
   Variation: {
-    __resolveReference: (reference, { dataSources}) => {
-      return dataSources.variationAPI.getVariation(reference.id)
+    id: (parent, args, { dataSources }) => dataSources.variationAPI.getId(parent),
+    name: (parent, args, { dataSources }) => dataSources.variationAPI.getSymbol(parent),
+    synonyms: (parent, args, { dataSources }) => dataSources.variationAPI.getSynonyms(parent),
+    __resolveReference: ({ id }, { dataSources}) => {
+      return dataSources.variationAPI.getVariation(id)
     },
   },
 };
