@@ -1,26 +1,20 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { buildFederatedSchema } = require('@apollo/federation');
-const PhenotypeOntologyAPI = require('./PhenotypeOntologyAPI');
 const PhenotypeAnnotationAPI = require('./PhenotypeAnnotationAPI');
-// ({
-//   id: 'WBPhenotype:0002254',
-//   name: '3 prime target RNA uridylation reduced'
-// })
 
 const typeDefs = gql`
   type Query {
-    getPhenotypeOntologyTerm(id: String!): PhenotypeOntology
     getPhenotypeAnnotationByVariation(variationId: String!): [PhenotypeAnnotation!]
   }
 
-  type PhenotypeOntology {
+  type PhenotypeOntologyTerm {
     id: ID!
     name: String
   }
 
   type PhenotypeAnnotation {
     id: ID!
-    phenotype: PhenotypeOntology!
+    phenotype: PhenotypeOntologyTerm!
     variation: Variation!
   }
 
@@ -33,18 +27,9 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    getPhenotypeOntologyTerm: (parent, { id }, { dataSources }) => {
-      return { id };
-    },
     getPhenotypeAnnotationByVariation: (parent, { variationId }, { dataSources }) => {
       return dataSources.phenotypeAnnotationAPI.getAnnotationsByVariation(variationId);
     }
-  },
-  PhenotypeOntology: {
-    name: async ({id}, args, { dataSources }) => {
-      const { name } = await dataSources.phenotypeOntologyAPI.getPhenotypeOntologyTerm(id);
-      return name;
-    },
   },
   PhenotypeAnnotation: {
     id: (parent, args, { dataSources }) => {
@@ -68,7 +53,6 @@ const resolvers = {
 const server = new ApolloServer({
   schema: buildFederatedSchema([{ typeDefs, resolvers }]),
   dataSources: () => ({
-    phenotypeOntologyAPI: new PhenotypeOntologyAPI(),
     phenotypeAnnotationAPI: new PhenotypeAnnotationAPI(),
   })
 });
