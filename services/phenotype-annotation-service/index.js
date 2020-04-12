@@ -59,7 +59,9 @@ const resolvers = {
     },
   },
   Variation: {
-
+    phenotypeAnnotations: (variation, args, { dataSources }) => {
+      return dataSources.phenotypeAnnotationAPI.getAnnotationsByVariation(variation.id);
+    }
   }
 }
 
