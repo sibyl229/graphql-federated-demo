@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const { buildFederatedSchema } = require('@apollo/federation');
+const VariantAPI = require('./VariantAPI');
 const VariationAPI = require('./VariationAPI');
 
 // The GraphQL schema
@@ -15,9 +16,15 @@ const typeDefs = gql`
   }
 
   type Variant {
-    id: ID!
-    variations: [Variation]!
+    hgvs: ID!
+    assembly: String
+    chromosome: String
+    start: Int!
+    end: Int!
+    genomicReferenceSequence: String
+    genomicVariantSequence: String
   }
+
 `;
 
 // A map of functions which return data for the schema.
@@ -31,9 +38,13 @@ const resolvers = {
     id: (parent, args, { dataSources }) => dataSources.variationAPI.getId(parent),
     name: (parent, args, { dataSources }) => dataSources.variationAPI.getSymbol(parent),
     synonyms: (parent, args, { dataSources }) => dataSources.variationAPI.getSynonyms(parent),
+    variants: (parent, args, { dataSources }) => dataSources.variantAPI.getVariantsByVariation(parent.id),
     __resolveReference: ({ id }, { dataSources}) => {
       return dataSources.variationAPI.getVariation(id)
     },
+  },
+  Variant: {
+    hgvs: (parent, args, { dataSources }) => dataSources.variantAPI.getHgvs(parent),
   },
 };
 
@@ -43,7 +54,8 @@ const server = new ApolloServer({
     resolvers,
   }]),
   dataSources: () => ({
-    variationAPI: new VariationAPI()
+    variationAPI: new VariationAPI(),
+    variantAPI: new VariantAPI()
   })
 });
 

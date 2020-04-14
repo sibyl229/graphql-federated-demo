@@ -15,7 +15,10 @@ class VariationAPI extends RESTDataSource {
       }
     });
     const [variation] = data.hits.hits;
-    return variation && variation._source;
+    return variation && {
+      ...variation._source,
+      id: variation._source.primaryId,
+    };
   }
 
   getId(doc) {
