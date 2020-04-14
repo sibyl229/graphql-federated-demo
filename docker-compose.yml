@@ -40,6 +40,20 @@ services:
     depends_on:
       - elasticsearch
 
+  vep-service:
+    image: "node:12"
+    working_dir: /home/node/app
+    volumes:
+      - ./services/vep-service:/home/node/app:ro
+      - vep-service-node-modules-volume:/home/node/app/node_modules
+    expose:
+      - "4000"
+    command: >
+      bash -c "npm ci && npm run start"
+    depends_on:
+      - elasticsearch
+
+
   elasticsearch:
     image: "docker.elastic.co/elasticsearch/elasticsearch:7.6.2"
     volumes:
@@ -64,3 +78,4 @@ volumes:
   gateway-node-modules-volume:
   variation-service-node-modules-volume:
   phenotype-annotation-service-node-modules-volume:
+  vep-service-node-modules-volume:

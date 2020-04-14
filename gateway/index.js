@@ -7,6 +7,7 @@ const gateway = new ApolloGateway({
   serviceList: [
     { name: 'Variation', url: 'http://variation-service:4000' },
     { name: 'PhenotypeAnnotation', url: 'http://phenotype-annotation-service:4000' },
+    { name: 'vep', url: 'http://vep-service:4000' },
     // more services
   ],
 });

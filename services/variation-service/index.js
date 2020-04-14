@@ -15,7 +15,7 @@ const typeDefs = gql`
     variants: [Variant]!
   }
 
-  type Variant {
+  type Variant @key(fields: "hgvs") {
     hgvs: ID!
     assembly: String
     chromosome: String
