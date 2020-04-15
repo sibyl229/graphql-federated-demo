@@ -9,10 +9,13 @@ class VariationAPI extends RESTDataSource {
   async getVariation(id) {
     const data = await this.post('/_search/', {
       query: {
-	term: {
-	  'primaryId.keyword': id,
-	}
-      }
+	bool: {
+	  should: [
+	    { term: { 'primaryId.keyword': id, } },
+	    { term: { 'symbol.keyword': id, } },
+	  ],
+	},
+      },
     });
     const [variation] = data.hits.hits;
     return variation && {
