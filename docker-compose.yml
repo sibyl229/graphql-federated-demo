@@ -13,6 +13,7 @@ services:
     depends_on:
       - variation-service
       - phenotype-annotation-service
+      - vep-service
 
   variation-service:
     image: "node:12"
