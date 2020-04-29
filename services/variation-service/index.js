@@ -7,6 +7,7 @@ const VariationAPI = require('./VariationAPI');
 const typeDefs = gql`
   type Query {
     getVariation(id: String!): Variation
+    getVariant(id: String!): Variant
   }
 
   type Variation @key(fields: "id") {
@@ -32,6 +33,9 @@ const resolvers = {
   Query: {
     getVariation: (parent, { id }, { dataSources }) => {
       return dataSources.variationAPI.getVariation(id);
+    },
+    getVariant: (parent, { id }, { dataSources }) => {
+      return dataSources.variantAPI.getVariantByHgvs(id);
     },
   },
   Variation: {

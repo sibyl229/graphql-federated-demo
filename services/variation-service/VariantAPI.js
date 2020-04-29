@@ -17,6 +17,18 @@ class VariantAPI extends RESTDataSource {
     return data.hits.hits.map(({_source}) => _source);
   }
 
+  async getVariantByHgvs(hgvs) {
+    const data = await this.post('/_search/', {
+      query: {
+	term: {
+	  'variantId.keyword': hgvs,
+	}
+      }
+    });
+    return data.hits.hits.map(({_source}) => _source)[0];
+  }
+
+
   getHgvs(doc) {
     return doc.variantId;
   }
