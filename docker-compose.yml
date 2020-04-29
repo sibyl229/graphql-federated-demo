@@ -7,7 +7,7 @@ services:
       - ./gateway:/home/node/app:ro
       - gateway-node-modules-volume:/home/node/app/node_modules
     ports:
-      - "9016:4000"
+      - "${FEDERATION_GATEWAY_PORT}:4000"
     command: >
       bash -c "npm ci && npm run start"
     depends_on:
@@ -70,7 +70,7 @@ services:
     links:
       - elasticsearch
     ports:
-      - "5601:5601"
+      - "${FEDERATION_KIBANA_PORT}:5601"
     depends_on:
       - elasticsearch
 
