@@ -14,6 +14,7 @@ services:
       - variation-service
       - phenotype-annotation-service
       - vep-service
+    restart: on-failure
 
   variation-service:
     image: "node:12"

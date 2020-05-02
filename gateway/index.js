@@ -12,6 +12,12 @@ const gateway = new ApolloGateway({
   ],
 });
 
+gateway.serviceHealthCheck().catch(() => {
+  console.log(error);
+  console.log('Terminted due to failed service health check.');
+  process.exit(1);
+})
+
 // Pass the ApolloGateway to the ApolloServer constructor
 const server = new ApolloServer({
   gateway,
