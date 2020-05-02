@@ -4,7 +4,7 @@ services:
     image: "node:12"
     working_dir: /home/node/app
     volumes:
-      - ./gateway:/home/node/app:ro
+      - ./gateway:/home/node/app
       - gateway-node-modules-volume:/home/node/app/node_modules
     ports:
       - "${FEDERATION_GATEWAY_PORT}:4000"
@@ -20,7 +20,7 @@ services:
     image: "node:12"
     working_dir: /home/node/app
     volumes:
-      - ./services/variation-service:/home/node/app:ro
+      - ./services/variation-service:/home/node/app
       - variation-service-node-modules-volume:/home/node/app/node_modules
     expose:
       - "4000"
@@ -33,7 +33,7 @@ services:
     image: "node:12"
     working_dir: /home/node/app
     volumes:
-      - ./services/phenotype-annotation-service:/home/node/app:ro
+      - ./services/phenotype-annotation-service:/home/node/app
       - phenotype-annotation-service-node-modules-volume:/home/node/app/node_modules
     expose:
       - "4000"
@@ -46,7 +46,7 @@ services:
     image: "node:12"
     working_dir: /home/node/app
     volumes:
-      - ./services/vep-service:/home/node/app:ro
+      - ./services/vep-service:/home/node/app
       - vep-service-node-modules-volume:/home/node/app/node_modules
     expose:
       - "4000"
