@@ -1,5 +1,21 @@
 # graphql-federated-demo
 
+Querying APIs in a microservices architecture and stitching responses is complicated and error-prone.
+
+This proof-of-concept tries to address that.
+
+The proposed solution uses [Apollo Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/) to compose multiple GraphQL enabled microservices into a single [GraphQL API](https://graphql.org/).
+
+Both GraphQL and Apollo Federation are specifications with implementations in [most popular programming languages](https://www.apollographql.com/docs/apollo-server/federation/other-servers/).
+
+The resulting GraphQL API can be explored using GraphQL Playground:
+
+![Explore the data with GraphQL Playround](./docs/images/graphql_playground_annotated.png)
+
+## Architecture Schematics
+
+![Architecture Schematics](./docs/images/architecture_schematics.png)
+
 ## Example Queries
 
 If you were given a link to the GraphQL Playground of this project or have started a [development environment](#setup-development-environment), you can paste in one of the following queries as a starting point to explore data through the GraphQL API.
@@ -87,4 +103,3 @@ make start
 ```
 make clean
 ```
-
