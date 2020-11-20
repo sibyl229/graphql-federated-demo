@@ -4,7 +4,8 @@ const PhenotypeAnnotationAPI = require('./PhenotypeAnnotationAPI');
 
 const typeDefs = gql`
   type Query {
-    getPhenotypeAnnotationByVariation(variationId: String!): [PhenotypeAnnotation!]
+    getPhenotypeAnnotationByVariation(variationId: String!): [PhenotypeAnnotation]
+    getPhenotypeAnnotationByPhenotypeTerm(phenotypeTermId: String!): [PhenotypeAnnotation]
   }
 
   type PhenotypeOntologyTerm {
@@ -29,7 +30,10 @@ const resolvers = {
   Query: {
     getPhenotypeAnnotationByVariation: (parent, { variationId }, { dataSources }) => {
       return dataSources.phenotypeAnnotationAPI.getAnnotationsByVariation(variationId);
-    }
+    },
+    getPhenotypeAnnotationByPhenotypeTerm: (parent, { phenotypeTermId }, { dataSources }) => {
+      return dataSources.phenotypeAnnotationAPI.getAnnotationsByPhenotypeTerm(phenotypeTermId);
+    },
   },
   PhenotypeAnnotation: {
     id: (parent, args, { dataSources }) => {

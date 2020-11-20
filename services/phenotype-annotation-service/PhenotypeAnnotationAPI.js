@@ -19,6 +19,19 @@ class PhenotypeAnnotationAPI extends RESTDataSource {
     return data.hits.hits.map(({_source}) => _source);
   }
 
+  async getAnnotationsByPhenotypeTerm(id) {
+    const data = await this.post(`/_search`, {
+      "query": {
+	"term": {
+	  "phenotypeTermIdentifiers.termId.keyword": {
+            "value": id,
+	  }
+	}
+      }
+    });
+    return data.hits.hits.map(({_source}) => _source);
+  }
+
   getId(doc) {
     const {annotationId: id} =  doc;
     return id;
